@@ -51,10 +51,12 @@ spec) or a product regression (report it, don't paper over it in the spec).
    spec omits that prerequisite, that's drift. Any harness fix from triage gets re-driven
    live before it ships. Final teardown happens after the last drive.
 
-5. **Triage.** Wrong or missing user-POV description → doc drift, fix it. Working
-   behavior the harness can't drive → harness gap, fix it (scripts executable, invocation
-   documented in the spec). App behavior that's actually broken → product gap; record it
-   for the user, keep it out of this pass.
+5. **Triage.** When the findings stack up, bucket them first with the classifier pre-pass
+   (`references/classifier.md`: `spec drift, harness gap, product gap, unclear`) and read
+   only what falls below the confidence bar. Then: wrong or missing user-POV description
+   → doc drift, fix it. Working behavior the harness can't drive → harness gap, fix it
+   (scripts executable, invocation documented in the spec). App behavior that's actually
+   broken → product gap; record it for the user, keep it out of this pass.
 
 6. **Ship.** For changed: apply the corrections, re-read every changed file before
    declaring done, update the index (`proven <date>`), and append durable lessons to

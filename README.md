@@ -14,6 +14,10 @@ or Codex). Nothing is reported done until it's proven:
   code quality) audit the whole diff; their findings go back to the squad as fix briefs
   and are re-verified until clean.
 - **The squad learns** — durable lessons persist across runs in `.xsquad/MEMORY.md`.
+- **Cheap triage** — a classifier pre-pass ([classifier.dev](https://classifier.dev))
+  bulk-buckets validator failures, subagent logs, and review findings with one HTTP call
+  per batch, so agents read only what needs judgment instead of raw output. Optional
+  `CLASSIFIER_DEV_API_KEY` (keyless works too).
 
 Six installable skills: the core orchestrator plus five standalone slash commands.
 
@@ -50,7 +54,8 @@ npx skills add https://github.com/areai51/xsquad         # skills.sh — install
     │   ├── SKILL.md
     │   ├── commands/      # the five command procedures
     │   ├── agents/        # subagent contracts (implementer, two reviewers)
-    │   └── references/    # config schema, dispatch commands, brief/report templates
+    │   ├── references/    # config schema, dispatch commands, brief/report templates
+    │   └── scripts/       # classify.sh — classifier.dev triage pre-pass
     └── xsq-*/SKILL.md     # the five command wrappers
 ```
 

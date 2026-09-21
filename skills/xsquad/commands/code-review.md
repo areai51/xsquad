@@ -37,6 +37,12 @@ After both finish, write `.xsquad/runs/<run-id>/review-findings.md`:
 - Findings first, deduplicated across reviewers; weight overlapping findings more heavily
   (two independent reviewers found it → higher confidence), resolve disagreements with
   your own judgment after reading the code yourself.
+- Before clustering fix briefs, run the classifier pre-pass over the combined findings
+  (`references/classifier.md`): bucket each finding by task footprint (labels = task
+  names from the plan + `unclear`) so footprint-disjoint grouping is mechanical, and
+  cross-check each priority against the reviewer's (`high, medium, low` — a mismatch
+  flags the finding for your own read). Findings landing in `unclear` are the only ones
+  you must read in full to place.
 - Each finding: priority (high/medium/low), file:line, one-paragraph description with
   evidence, and the fix direction. Attribute sourced items (e.g. PR-discussion findings).
 - Keep summaries brief; a smaller number of high-conviction findings beats a long list of

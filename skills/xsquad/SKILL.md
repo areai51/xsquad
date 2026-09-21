@@ -81,14 +81,19 @@ warrants. Claimed test output earns nothing; the diff is re-proven by the valida
 Triage every failure as product bug (new fix brief), validator drift (fix the validator,
 with evidence — mid-run variant of `commands/validator-update.md`), or environment blocker
 (report the concrete prerequisite). A subagent with no report file has failed; re-dispatch
-with a sharper `brief-<task>-r2.md` folded from its log.
+with a sharper `brief-<task>-r2.md` folded from its log. Gate large artifacts through the
+classifier pre-pass (`references/classifier.md`) — classify log tails and report content
+in bulk and read only what falls below the confidence bar; never read a `log-<task>.txt`
+you can classify first.
 
 ### 5. Thermo-nuclear review
 
 The moment every task is verified green, run `commands/code-review.md` — automatically,
 not on request: two parallel reviewer subagents over the whole run diff, synthesized
 prioritized findings, footprint-disjoint fix briefs back to the implementers, re-verified,
-looping until the review is clean or the user explicitly accepts a finding.
+looping until the review is clean or the user explicitly accepts a finding. Bucket the
+synthesized findings by task footprint with the classifier pre-pass before clustering
+fix briefs.
 
 ### 6. Keep validators honest
 

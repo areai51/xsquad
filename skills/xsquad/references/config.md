@@ -29,6 +29,13 @@ to `.gitignore`. If the project already uses a `tasks/` directory from the legac
 skill, migrate it (briefs/reports → the run dir, MEMORY.md → `.xsquad/MEMORY.md`) or
 symlink `tasks/MEMORY.md` → `.xsquad/MEMORY.md`; don't keep two memories.
 
+## Environment
+
+- **`CLASSIFIER_DEV_API_KEY`** — optional; enables the account route on classifier.dev
+  for the bulk triage pre-pass (`references/classifier.md`, `scripts/classify.sh` next
+  to SKILL.md). Read from the environment or the project-root `.env`; absent, the
+  keyless endpoint still serves the same API. Never classified text: secrets.
+
 ## config.json
 
 ```json

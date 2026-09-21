@@ -52,6 +52,14 @@ Hold three invariants the whole wave, whatever the failure:
 
 ## 3. Triage every failure
 
+**Classifier pre-pass first** (`references/classifier.md`): collect the failing output
+tails, then classify them in bulk with
+`scripts/classify.sh "product bug, validator drift, environment blocker, unclear"`.
+Buckets at ≥0.9 confidence are settled — act without reading more than the classified
+lines; re-ask the 0.5–0.9 band with `--tier smart` when few; read anything `< 0.5` or
+`unclear` yourself. The classification only routes your reading; a product bug still
+needs the record below, with evidence paths.
+
 - **Product bug** — the app doesn't do what the spec says it should. Record precisely:
   what was driven, what was expected, what happened, with evidence paths. During a squad
   run this becomes a fix brief for an implementer subagent; standalone, hand it to the
