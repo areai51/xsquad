@@ -82,9 +82,11 @@ Triage every failure as product bug (new fix brief), validator drift (fix the va
 with evidence — mid-run variant of `commands/validator-update.md`), or environment blocker
 (report the concrete prerequisite). A subagent with no report file has failed; re-dispatch
 with a sharper `brief-<task>-r2.md` folded from its log. Gate large artifacts through the
-classifier pre-pass (`references/classifier.md`) — classify log tails and report content
-in bulk and read only what falls below the confidence bar; never read a `log-<task>.txt`
-you can classify first.
+Jev pre-pass (`references/classifier.md`) — never read a `log-<task>.txt` you can check
+first. As each report lands, run one `--check` call over it with a statement per brief
+acceptance criterion plus the standard deviation/validators-claimed statements: settled
+answers tell you which reports need a full read and which failures to expect; they never
+replace re-running the validators.
 
 ### 5. Thermo-nuclear review
 

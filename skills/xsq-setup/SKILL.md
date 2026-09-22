@@ -11,8 +11,9 @@ the xSquad package (the sibling `xsquad/` skill folder, which holds `SKILL.md`, 
 Read `../xsquad/commands/setup.md` from the sibling `xsquad` skill folder — one level up from this file
 (`xsquad/commands/setup.md`) — and follow that procedure exactly. It detects installed
 runners, enumerates each one's model list (pi: `pi --list-models`; codex: config.toml +
-docs + probe; claude: aliases + probe), asks for the per-role models, validates every
-slug, and writes `.xsquad/config.json`.
+docs + probe; claude: aliases + probe), asks for the per-role models and the Jev classifier
+backend (TypeSafe API key, Vercel AI Gateway, or keyless), validates every slug and the
+classifier key, and writes `.xsquad/config.json`.
 
 If the package cannot be located from this file's own path, ask the user for the xSquad
 package path; do not improvise the procedure.

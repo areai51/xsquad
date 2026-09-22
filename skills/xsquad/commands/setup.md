@@ -72,9 +72,31 @@ capability). Show only confirmed slugs. On a re-run, keep any entries the user c
 **(d) Reviewer model(s).** The model(s) for the two code-review subagents. Default: the
 same as the subagent model; a stronger reasoning model is a common upgrade.
 
-**(e) Confirm the full table.** Show every role with its model, marking any real slug not
-in the detected set as needing a choice. Ask whether to accept as-is or change specific
-roles, offering the detected models as options.
+**(e) Classifier backend (Jev).** The squad's System One pre-pass
+(`references/classifier.md`) runs on Jev, TypeSafe AI's ~200 ms decision model. Detect
+what's already available — `TYPESAFE_API_KEY`, `AI_GATEWAY_API_KEY`, or
+`VERCEL_OIDC_TOKEN` in the environment or the project-root `.env` / `.env.local` (check names only;
+never print values) — and ask which route to use, preselecting a detected one:
+
+- **TypeSafe API key** (`typesafe`) — Jev direct; key from
+  [console.typesafe.ai/keys](https://console.typesafe.ai/keys).
+- **Vercel AI Gateway** (`gateway`) — Jev as `typesafe-ai/jev`, billed through the
+  user's Vercel team; key from the AI Gateway → API Keys page in the Vercel dashboard (or
+  `vercel env pull` for a 12-hour `VERCEL_OIDC_TOKEN` in a linked project).
+- **Keyless** (`classifier.dev`) — no signup, shared per-IP rate limits; fine to try.
+
+If the chosen route has no key yet, have the user store it **without pasting it into the
+chat**: copy the key, then run `! pbpaste | <skill-path>/scripts/classify.sh --setup
+typesafe` (or `gateway`) from the project root — or run the same command without the
+pipe in their own terminal for a hidden prompt, or add `TYPESAFE_API_KEY=…` /
+`AI_GATEWAY_API_KEY=…` to `.env` by hand. `--setup` writes `.env` with mode 600 and adds
+`.env` to `.gitignore`. If the user pastes a key into the chat anyway, store it the same
+way (`printf '%s' '<key>' | classify.sh --setup …`), never echo it back, and suggest
+rotating it.
+
+**(f) Confirm the full table.** Show every role with its model, plus the classifier
+backend, marking any real slug not in the detected set as needing a choice. Ask whether
+to accept as-is or change specific roles, offering the detected models as options.
 
 ## 5. Validate
 
@@ -93,6 +115,12 @@ pi -p --no-session --provider "<provider>" --model "<id>" "Reply with exactly: O
 If a chosen slug fails the probe, stop and ask again — never save an unconfirmed slug.
 `inherit` always passes.
 
+Probe the classifier backend too:
+`<skill-path>/scripts/classify.sh --backend <backend> --probe` must print
+`<backend>\tok\t…`. On a 401, the key is wrong or for the other route — go back to (e).
+A classifier failure never blocks the model config: offer `classifier.dev` (keyless) or
+leave it `auto`, and say so.
+
 ## 6. Write the config
 
 Overwrite `.xsquad/config.json` in full so re-runs stay idempotent (schema and a worked
@@ -105,12 +133,14 @@ example: `references/config.md`):
   "subagent": "claude-sonnet-4-5",
   "subagent_pool": [],
   "reviewer": "claude-sonnet-4-5",
+  "classifier": "typesafe",
   "setup_probe": ["2026-01-15", "claude 2.1.271"]
 }
 ```
 
 If `.xsquad/` was just created, add `.xsquad/runs/` to `.gitignore` (runs are scratch;
 `config.json`, `MEMORY.md`, and `validators/` are project infrastructure and get committed).
+Keys never go in `config.json` — only the backend name; keys live in the gitignored `.env`.
 
 ## 7. Confirm
 

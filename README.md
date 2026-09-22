@@ -14,10 +14,13 @@ or Codex). Nothing is reported done until it's proven:
   code quality) audit the whole diff; their findings go back to the squad as fix briefs
   and are re-verified until clean.
 - **The squad learns** — durable lessons persist across runs in `.xsquad/MEMORY.md`.
-- **Cheap triage** — a classifier pre-pass ([classifier.dev](https://classifier.dev))
-  bulk-buckets validator failures, subagent logs, and review findings with one HTTP call
-  per batch, so agents read only what needs judgment instead of raw output. Optional
-  `CLASSIFIER_DEV_API_KEY` (keyless works too).
+- **Cheap triage and checks** — a System One pre-pass on
+  [Jev](https://docs.typesafe.ai) (TypeSafe AI, ~200 ms per call) buckets validator
+  failures and review findings, and checks subagent reports and logs against the brief's
+  acceptance criteria, so agents read only what needs judgment instead of raw output.
+  Use a `TYPESAFE_API_KEY`, Vercel AI Gateway (`AI_GATEWAY_API_KEY`, model
+  `typesafe-ai/jev`), or the keyless [classifier.dev](https://classifier.dev) proxy —
+  `/xSq-setup` asks which.
 
 Six installable skills: the core orchestrator plus five standalone slash commands.
 
@@ -30,7 +33,7 @@ npx skills add https://github.com/areai51/xsquad         # skills.sh — install
 
 ## Quickstart
 
-1. `/xSq-setup` — pick runner (claude / pi / codex) and models per role → `.xsquad/config.json`
+1. `/xSq-setup` — pick runner (claude / pi / codex), models per role, and the Jev backend → `.xsquad/config.json` (keys go to the gitignored `.env`)
 2. `/xSq-validator-setup` — generate build/test/lint gates + 3–5 feature validators that drive the real app
 3. `/xsquad build the export-to-CSV feature end to end` — plan → briefs → parallel subagents → continuous validator verification → automatic review → fix loop → report
 
@@ -55,7 +58,7 @@ npx skills add https://github.com/areai51/xsquad         # skills.sh — install
     │   ├── commands/      # the five command procedures
     │   ├── agents/        # subagent contracts (implementer, two reviewers)
     │   ├── references/    # config schema, dispatch commands, brief/report templates
-    │   └── scripts/       # classify.sh — classifier.dev triage pre-pass
+    │   └── scripts/       # classify.sh / classify.py — Jev triage + check pre-pass
     └── xsq-*/SKILL.md     # the five command wrappers
 ```
 

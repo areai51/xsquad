@@ -31,10 +31,16 @@ symlink `tasks/MEMORY.md` → `.xsquad/MEMORY.md`; don't keep two memories.
 
 ## Environment
 
-- **`CLASSIFIER_DEV_API_KEY`** — optional; enables the account route on classifier.dev
-  for the bulk triage pre-pass (`references/classifier.md`, `scripts/classify.sh` next
-  to SKILL.md). Read from the environment or the project-root `.env`; absent, the
-  keyless endpoint still serves the same API. Never classified text: secrets.
+Keys for the Jev classifier pre-pass (`references/classifier.md`, `scripts/classify.sh`
+next to SKILL.md). Read from the environment or the project-root `.env.local` / `.env` (gitignored;
+`classify.sh --setup <backend>` writes it). Never classified text: secrets.
+
+- **`TYPESAFE_API_KEY`** — `typesafe` backend: Jev direct from TypeSafe AI.
+- **`AI_GATEWAY_API_KEY`** (or **`VERCEL_OIDC_TOKEN`**) — `gateway` backend: Jev
+  (`typesafe-ai/jev`) through Vercel AI Gateway.
+- **`CLASSIFIER_DEV_API_KEY`** — optional; account route on the keyless `classifier.dev`
+  fallback.
+- **`XSQ_CLASSIFIER_BACKEND`** — optional per-shell override of config `classifier`.
 
 ## config.json
 
@@ -46,6 +52,7 @@ symlink `tasks/MEMORY.md` → `.xsquad/MEMORY.md`; don't keep two memories.
   "subagent_pool": [],
   "reviewer": "glm-5.2:cloud",
   "provider": "",
+  "classifier": "typesafe",
   "setup_probe": ["2026-01-15", "claude 2.1.271"]
 }
 ```
@@ -61,6 +68,8 @@ symlink `tasks/MEMORY.md` → `.xsquad/MEMORY.md`; don't keep two memories.
   or capability; empty list = unlimited single-model).
 - **reviewer** — model(s) for the two review subagents.
 - **provider** — pi only: default `--provider` for slugs that need it.
+- **classifier** — Jev backend for the pre-pass: `typesafe` | `gateway` |
+  `classifier.dev` | `auto` (pick by which key is present). Empty = `auto`.
 - **setup_probe** — date + runner version at last confirmed setup (diagnostics).
 
 ## Model lists per runner
