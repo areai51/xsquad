@@ -32,7 +32,7 @@ Nothing is reported done until validators and review are green.
 
 | Command | Procedure | What it does |
 |---|---|---|
-| `/xSq-setup` | `commands/setup.md` | Pick runner + models for orchestrator, subagents, reviewers |
+| `/xSq-setup` | `commands/setup.md` | Pick runner + models for orchestrator, subagents, reviewers; chains validator setup when no suite exists |
 | `/xSq-validator-setup` | `commands/validator-setup.md` | Create the project validator suite |
 | `/xSq-validator-run` | `commands/validator-run.md` | Run validators, triage failures |
 | `/xSq-validator-update` | `commands/validator-update.md` | Upkeep pass keeping validators honest |

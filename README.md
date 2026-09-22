@@ -33,16 +33,15 @@ npx skills add https://github.com/areai51/xsquad         # skills.sh — install
 
 ## Quickstart
 
-1. `/xSq-setup` — pick runner (claude / pi / codex), models per role, and the Jev backend → `.xsquad/config.json` (keys go to the gitignored `.env`)
-2. `/xSq-validator-setup` — generate build/test/lint gates + 3–5 feature validators that drive the real app
-3. `/xsquad build the export-to-CSV feature end to end` — plan → briefs → parallel subagents → continuous validator verification → automatic review → fix loop → report
+1. `/xSq-setup` — pick runner (claude / pi / codex), models per role, and the Jev backend → `.xsquad/config.json` (keys go to the gitignored `.env`); if no validator suite exists yet, it automatically chains the validator setup in the same pass
+2. `/xsquad build the export-to-CSV feature end to end` — plan → briefs → parallel subagents → continuous validator verification → automatic review → fix loop → report
 
 ## Commands
 
 | Command | What it does |
 |---|---|
 | `/xsquad <goal>` | Full squad run: plan → briefs → parallel subagents → validator verification → automatic code review → fix loop → report |
-| `/xSq-setup` | Configure runner + models per role |
+| `/xSq-setup` | Configure runner + models per role; chains validator setup when no suite exists |
 | `/xSq-validator-setup` | Generate the project validator suite |
 | `/xSq-validator-run` | Run validators, triage failures (product bug / validator drift / env blocker) |
 | `/xSq-validator-update` | Upkeep pass keeping validators honest (full pass + mid-run variant) |

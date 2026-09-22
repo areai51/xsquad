@@ -142,9 +142,16 @@ If `.xsquad/` was just created, add `.xsquad/runs/` to `.gitignore` (runs are sc
 `config.json`, `MEMORY.md`, and `validators/` are project infrastructure and get committed).
 Keys never go in `config.json` — only the backend name; keys live in the gitignored `.env`.
 
-## 7. Confirm
+## 7. Chain into validator setup
 
 Tell the user the config was written, that it applies to new runs, and that re-running
-this command updates it. If the project has no validator suite yet (no
-`.xsquad/validators/README.md`), offer `/xSq-validator-setup` once — the squad's verify
-gate needs validators to check tasks against. On no, move on without pushing.
+this command updates it. Then, as part of this same command, set up the validator suite
+automatically:
+
+- If `.xsquad/validators/README.md` already exists, say the suite is in place and that
+  `/xSq-validator-update` keeps it honest — do not regenerate it here.
+- If it does not exist, immediately read `commands/validator-setup.md` (same folder as
+  this file) and run that whole procedure as the next phase of `/xSq-setup`, before the
+  command ends. The squad's verify gate needs validators to check tasks against, so a
+  fresh setup is not complete without them. If the user explicitly declines the
+  validator phase, respect that — say so, and move on without pushing.
