@@ -24,6 +24,15 @@ or Codex). Nothing is reported done until it's proven:
 
 Six installable skills: the core orchestrator plus five standalone slash commands.
 
+## Token cost: solo Opus 5.5 vs. xSquad
+
+![Estimated API cost per feature: a solo Opus 5.5 session vs. xSquad with an Opus 5.5 orchestrator and GPT-6 Luna subagents](docs/token-costs.svg)
+
+These are modeled estimates, not measurements. The xSquad orchestrator runs on Opus 5.5 and
+the implementer and reviewer subagents run on GPT-6 Luna ($0.10 / $0.50 per 1M input / output
+tokens, with no cache discount assumed). On a 6-task feature, the estimate is about $4.13
+with xSquad vs. $9.46 solo. On a 12-task feature, it's about $7.44 vs. $25.99.
+
 ## Install
 
 ```sh

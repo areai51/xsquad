@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" width="900" height="520" role="img" aria-label="Cost per feature: Opus 5.5 solo vs xSquad with Opus 5.5 orchestrator and GPT-6 Luna subagents">
+<rect width="900" height="520" fill="#ffffff"/>
+<text x="80" y="56" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="22" font-weight="600" fill="#111413">Cost per feature</text>
+<text x="80" y="82" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#8a8f8b">Estimated API cost vs. number of tasks</text>
+<line x1="80" x2="720" y1="430" y2="430" stroke="#eef0ee"/>
+<text x="68" y="434" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#8a8f8b" text-anchor="end">$0</text>
+<line x1="80" x2="720" y1="323.33333333333337" y2="323.33333333333337" stroke="#eef0ee"/>
+<text x="68" y="327.33333333333337" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#8a8f8b" text-anchor="end">$10</text>
+<line x1="80" x2="720" y1="216.66666666666669" y2="216.66666666666669" stroke="#eef0ee"/>
+<text x="68" y="220.66666666666669" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#8a8f8b" text-anchor="end">$20</text>
+<line x1="80" x2="720" y1="110" y2="110" stroke="#eef0ee"/>
+<text x="68" y="114" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#8a8f8b" text-anchor="end">$30</text>
+<text x="80" y="454" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#8a8f8b" text-anchor="middle">2</text>
+<text x="208" y="454" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#8a8f8b" text-anchor="middle">4</text>
+<text x="336" y="454" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#8a8f8b" text-anchor="middle">6</text>
+<text x="464" y="454" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#8a8f8b" text-anchor="middle">8</text>
+<text x="592" y="454" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#8a8f8b" text-anchor="middle">10</text>
+<text x="720" y="454" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#8a8f8b" text-anchor="middle">12</text>
+<text x="400" y="480" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#8a8f8b" text-anchor="middle">tasks</text>
+<path d="M80,403.952L144,388.432L208,370.77866666666665L272,350.99199999999996L336,329.072L400,305.01866666666666L464,278.832L528,250.512L592,220.05866666666668L656,187.47199999999998L720,152.752" fill="none" stroke="#2a78d6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="720" cy="152.752" r="5" fill="#2a78d6"/>
+<text x="734" y="148.752" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#111413">$25.99</text>
+<text x="734" y="166.752" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#2a78d6">Opus 5.5 solo</text>
+<path d="M80,407.29706666666664L144,401.8384L208,396.8170666666667L272,391.14506666666665L336,385.9104L400,380.02506666666665L464,374.57706666666667L528,368.4784L592,362.8170666666667L656,356.50506666666666L720,350.6304" fill="none" stroke="#1baf7a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="720" cy="350.6304" r="5" fill="#1baf7a"/>
+<text x="734" y="346.6304" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#111413">$7.44</text>
+<text x="734" y="364.6304" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#1baf7a">xSquads</text>
+<text x="734" y="380.6304" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#1baf7a">(Opus 5.5 orchestrator +</text>
+<text x="734" y="396.6304" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#1baf7a">GPT6 Luna subagents)</text>
+</svg>

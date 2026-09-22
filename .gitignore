@@ -1,2 +1,4 @@
 .env
 .DS_Store__pycache__/
+
+.xsquad/runs/
